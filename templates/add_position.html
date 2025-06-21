@@ -1,0 +1,13 @@
+{% extends "index.html" %}
+
+{% block content %}
+    <form action="{{ url_for('add_position') }}" method="post" enctype="multipart/form-data">
+
+        <input type="text" name="position_name" placeholder="name of position" required>
+        <input type="text" name="position_price" placeholder="price" required>
+        <input type="text" name="position_description" placeholder="description" required>
+        <input type="file" name="image" accept="image/*" required>
+
+        <input type="submit" value="Add Position">
+    </form>
+{% endblock %}
