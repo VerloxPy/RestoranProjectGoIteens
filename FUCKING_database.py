@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, String, Float, Integer, ForeignKey, Boolean, Text
+from sqlalchemy import create_engine, String, Float, Integer, ForeignKey, Boolean, Text, LargeBinary
 from sqlalchemy.orm import Mapped, mapped_column, relationship, sessionmaker
 from sqlalchemy.orm import DeclarativeBase
 from typing import List
@@ -49,6 +49,8 @@ class Menu(Base):
     id : Mapped[int] = mapped_column(primary_key=True, autoincrement=True)
     positions : Mapped[str] = mapped_column(String(100), unique=True)
     price : Mapped[int] = mapped_column(nullable=True)
+    description : Mapped[str] = mapped_column(String(200))
+    image: Mapped[bytes] = mapped_column(LargeBinary)
 
     orders: Mapped[List["Orders"]] = relationship(back_populates="menu_item")
 
@@ -65,5 +67,5 @@ class Orders(Base):
     menu_item: Mapped["Menu"] = relationship(back_populates="orders")
 
 
-# base = Base()
-# base.create_db()
+base = Base()
+base.create_db()
