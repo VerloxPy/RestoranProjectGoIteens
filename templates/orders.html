@@ -1,0 +1,31 @@
+{% extends "index.html" %}
+{% block content %}
+
+<h2>Ваші замовлення</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Назва</th>
+            <th>Кількість</th>
+            <th>Ціна</th>
+            <th>Сума</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+        <tr>
+            <td>{{ order.menu_item.positions }}</td>
+            <td>{{ order.quantity }}</td>
+            <td>{{ order.menu_item.price }} ₴</td>
+            <td>{{ order.menu_item.price * order.quantity }} ₴</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4" class="text-center">Немає замовлень</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
