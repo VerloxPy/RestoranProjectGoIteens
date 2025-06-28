@@ -24,9 +24,7 @@
 
 <h3>Загальна сума: {{ total_price }} ₴</h3>
 
-<form action="{{ url_for('checkout') }}">
-<input type="hidden" name="price" value="{{total_price}}">
-</form>
+
 
 <!-- Форма для очищення кошика -->
 <form action="{{ url_for('clear_basket') }}" method="post" style="display:inline-block;">
